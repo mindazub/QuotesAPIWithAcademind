@@ -29,3 +29,10 @@ Route::delete('/quote/{id}', [
 		'uses' => 'QuoteController@deleteQuote'
 	]);
 
+Route::post('/user', [
+		'uses' => 'UserController@signup'
+	]);
+
+Route::post('/user/signin', [
+		'uses' => 'UserController@signin'
+	]);
