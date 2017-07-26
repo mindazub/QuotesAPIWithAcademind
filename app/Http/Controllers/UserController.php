@@ -6,13 +6,20 @@ use Illuminate\Http\Request;
 use App\User;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
-
+use DB;
+use Response;
 /**
 * 
 */
 class UserController extends Controller
 {
-	
+	public function all(){
+		// $all_users = DB::raw('select * from users');
+		// return $all_users = User::orderBy('created_at', 'desc')->get();
+		// return response()->json([$all_users], 200);
+		return Response::json(User::with('token', 'password')->get());
+
+	}
 	public function signup(Request $request)
 	{
 		$this->validate($request, [
@@ -54,7 +61,7 @@ class UserController extends Controller
 		}
 		return response()->json([
 			'token' => $token
-			]);
+			], 200);
 
 
 	}

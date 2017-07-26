@@ -36,3 +36,6 @@ Route::post('/user', [
 Route::post('/user/signin', [
 		'uses' => 'UserController@signin'
 	]);
+Route::get('/users', [
+		'uses' => 'UserController@all'
+	]);
